@@ -12,6 +12,13 @@ describe TopHat::TwitterCardHelper do
     @template = ActionView::Base.new
   end
 
+  it 'does not generate a invalid empty twitter:card meta tag' do
+    @template.twitter_card()
+
+    output = @template.twitter_card
+    expect(output).to eq('')
+  end
+
   it 'generates a twitter:card meta tag' do
     @template.twitter_card('summary')
 
