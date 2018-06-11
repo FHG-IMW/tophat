@@ -23,7 +23,7 @@ describe TopHat::TwitterCardHelper do
     @template.twitter_card('summary')
 
     output = @template.twitter_card
-    expect(output).to eq('<meta content="summary" property="twitter:card" />')
+    expect(output).to eq('<meta content="summary" name="twitter:card" />')
   end
 
   it 'generates twitter:card meta tags' do
@@ -35,8 +35,8 @@ describe TopHat::TwitterCardHelper do
     end
 
     output = @template.twitter_card
-    expect(output).to include('<meta content="Rain Man" property="twitter:title" />')
-    expect(output).to include('<meta content="http://someurl.com/animage.jpg" property="twitter:image" />')
+    expect(output).to include('<meta content="Rain Man" name="twitter:title" />')
+    expect(output).to include('<meta content="http://someurl.com/animage.jpg" name="twitter:image" />')
   end
 
   it 'generates nested twitter:card meta tags' do
@@ -48,9 +48,9 @@ describe TopHat::TwitterCardHelper do
     end
 
     output = @template.twitter_card
-    expect(output).to include('<meta content="http://someurl.com/animage.jpg" property="twitter:image" />')
-    expect(output).to include('<meta content="123" property="twitter:image:height" />')
-    expect(output).to include('<meta content="456" property="twitter:image:width" />')
+    expect(output).to include('<meta content="http://someurl.com/animage.jpg" name="twitter:image" />')
+    expect(output).to include('<meta content="123" name="twitter:image:height" />')
+    expect(output).to include('<meta content="456" name="twitter:image:width" />')
   end
 
 
@@ -64,8 +64,8 @@ describe TopHat::TwitterCardHelper do
     end
 
     output = @template.twitter_card
-    expect(output).to include('<meta content="http://example.com/raw-stream/a.mp4" property="twitter:player:stream" />')
-    expect(output).to include('<meta content="123" property="twitter:player:stream:content_type" />')
+    expect(output).to include('<meta content="http://example.com/raw-stream/a.mp4" name="twitter:player:stream" />')
+    expect(output).to include('<meta content="123" name="twitter:player:stream:content_type" />')
   end
 
   it 'supports default tags' do
@@ -80,9 +80,9 @@ describe TopHat::TwitterCardHelper do
       end
     end
 
-    expect(output).to include('<meta content="https://example.com/embed/a" property="twitter:player:embed" />')
-    expect(output).to include('<meta content="https://example.com" property="twitter:player:site" />')
-    expect(output).not_to include('<meta content="https://example.com/embed/a" property="twitter:embed" />')
+    expect(output).to include('<meta content="https://example.com/embed/a" name="twitter:player:embed" />')
+    expect(output).to include('<meta content="https://example.com" name="twitter:player:site" />')
+    expect(output).not_to include('<meta content="https://example.com/embed/a" name="twitter:embed" />')
   end
 
 end
